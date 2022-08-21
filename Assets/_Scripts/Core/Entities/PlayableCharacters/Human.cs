@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Human : MonoBehaviour
+namespace Core.Entities.PlayableCharacters
 {
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(Jumping))]
+    [RequireComponent(typeof(GroundCheck))]
+    public class Human : PlayableCharacter
     {
-        
-    }
+        [SerializeField] private Jumping _jumping;
+        [SerializeField] private GroundCheck _groundCheck;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Awake()
+        {
+            base.Awake();
+
+            if (!IsActive)
+                _input.Controls.Human.Disable();
+        }
+
+        private void OnEnable()
+        {
+            _input.Controls.Human.Jump.performed += TryJump;
+        }
+
+        private void OnDisable()
+        {
+            _input.Controls.Human.Jump.performed -= TryJump;
+        }
+
+        private void TryJump(InputAction.CallbackContext ctx)
+        {
+            if (_groundCheck.CheckForGround())
+                _jumping.Jump();
+        }
     }
 }

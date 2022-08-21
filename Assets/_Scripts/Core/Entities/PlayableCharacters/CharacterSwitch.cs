@@ -11,7 +11,6 @@ namespace Core.Entities.PlayableCharacters
 
         private void OnEnable()
         {
-            _input.Controls.Drone.Disable();
             _input.Controls.Human.SwitchCharacter.performed += Switch;
             _input.Controls.Drone.SwitchCharacter.performed += Switch;
         }
