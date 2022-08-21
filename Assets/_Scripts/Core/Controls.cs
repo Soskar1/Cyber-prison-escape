@@ -134,6 +134,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grab"",
+                    ""type"": ""Button"",
+                    ""id"": ""bfad2566-cb61-4ca1-a279-8545895c74d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Release"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd54c5f1-4aef-4e57-8278-a3a75ecec40e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -202,6 +220,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchCharacter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d2f82c1-003e-4a2b-bfb6-db1876280be9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de0ddd8e-c89b-419c-ba99-4e7d12de4161"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Release"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -234,6 +274,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Movement = m_Drone.FindAction("Movement", throwIfNotFound: true);
         m_Drone_SwitchCharacter = m_Drone.FindAction("SwitchCharacter", throwIfNotFound: true);
+        m_Drone_Grab = m_Drone.FindAction("Grab", throwIfNotFound: true);
+        m_Drone_Release = m_Drone.FindAction("Release", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -344,12 +386,16 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private IDroneActions m_DroneActionsCallbackInterface;
     private readonly InputAction m_Drone_Movement;
     private readonly InputAction m_Drone_SwitchCharacter;
+    private readonly InputAction m_Drone_Grab;
+    private readonly InputAction m_Drone_Release;
     public struct DroneActions
     {
         private @Controls m_Wrapper;
         public DroneActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Drone_Movement;
         public InputAction @SwitchCharacter => m_Wrapper.m_Drone_SwitchCharacter;
+        public InputAction @Grab => m_Wrapper.m_Drone_Grab;
+        public InputAction @Release => m_Wrapper.m_Drone_Release;
         public InputActionMap Get() { return m_Wrapper.m_Drone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +411,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SwitchCharacter.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnSwitchCharacter;
                 @SwitchCharacter.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnSwitchCharacter;
                 @SwitchCharacter.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnSwitchCharacter;
+                @Grab.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnGrab;
+                @Release.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRelease;
+                @Release.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRelease;
+                @Release.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRelease;
             }
             m_Wrapper.m_DroneActionsCallbackInterface = instance;
             if (instance != null)
@@ -375,6 +427,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SwitchCharacter.started += instance.OnSwitchCharacter;
                 @SwitchCharacter.performed += instance.OnSwitchCharacter;
                 @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
+                @Release.started += instance.OnRelease;
+                @Release.performed += instance.OnRelease;
+                @Release.canceled += instance.OnRelease;
             }
         }
     }
@@ -398,5 +456,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
+        void OnRelease(InputAction.CallbackContext context);
     }
 }

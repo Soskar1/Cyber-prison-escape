@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Drone : MonoBehaviour
+namespace Core.Entities.PlayableCharacters
 {
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(Grabbing))]
+    public class Drone : PlayableCharacter
     {
-        
-    }
+        [SerializeField] private Grabbing _grabbing;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Awake()
+        {
+            base.Awake();
+
+            if (!IsActive)
+                _input.Controls.Drone.Disable();
+        }
+
+        private void OnEnable()
+        {
+            _input.Controls.Drone.Grab.performed += GrabItem;
+            _input.Controls.Drone.Release.performed += ReleaseItem;
+        }
+
+        private void OnDisable()
+        {
+            _input.Controls.Drone.Grab.performed -= GrabItem;
+            _input.Controls.Drone.Release.performed -= ReleaseItem;
+        }
+
+        private void GrabItem(InputAction.CallbackContext ctx) => _grabbing.TryGrabItem();
+        private void ReleaseItem(InputAction.CallbackContext ctx) => _grabbing.TryReleaseItem();
     }
 }
