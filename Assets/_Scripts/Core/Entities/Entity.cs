@@ -6,8 +6,8 @@ namespace Core.Entities
     {
         private IMovable _movable;
 
-        private void Awake() => _movable = GetComponent<IMovable>();
+        public virtual void Awake() => _movable = GetComponent<IMovable>();
 
-        public virtual void Move(float direction) => _movable.Move(direction);
+        public virtual void Move(Vector2 direction) => _movable.Move(direction);
     }
 }

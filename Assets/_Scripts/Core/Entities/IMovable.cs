@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IMovable
 {
-    void Move(float direction);
+    void Move(Vector2 direction);
 }

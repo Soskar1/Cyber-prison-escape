@@ -6,13 +6,12 @@ namespace Core.Entities.PlayableCharacters
     {
         [SerializeField] private Input _input;
         [SerializeField] private bool _isActive = false;
-
         public bool IsActive => _isActive;
 
         private void FixedUpdate()
         {
             if (_isActive)
-                Move(_input.MovementInput);
+                Move(_input.GetMovementInput(this));
         }
 
         public void Activate() => _isActive = true;

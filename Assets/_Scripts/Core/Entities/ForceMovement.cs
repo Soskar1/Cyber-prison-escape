@@ -11,11 +11,9 @@ namespace Core.Entities.Movement
         [SerializeField] private float _decceleration;
         [SerializeField] private float _velocityPower;
 
-        public float Speed => _speed;
-
-        public void Move(float direction)
+        public void Move(Vector2 direction)
         {
-            float targetSpeed = direction * _speed;
+            float targetSpeed = direction.x * _speed;
             float speedDif = targetSpeed - _rb2d.velocity.x;
             float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _acceleration : _decceleration;
             float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _velocityPower) * Mathf.Sign(speedDif);

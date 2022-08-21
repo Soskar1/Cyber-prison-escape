@@ -1,4 +1,5 @@
 using UnityEngine;
+using Core.Entities.PlayableCharacters;
 
 namespace Core
 {
@@ -7,13 +8,18 @@ namespace Core
         private Controls _controls;
         public Controls Controls => _controls;
 
-        private float _movementInput;
-        public float MovementInput => _movementInput;
-
         private void Awake() => _controls = new Controls();
         private void OnEnable() => _controls.Enable();
         private void OnDisable() => _controls.Disable();
 
-        private void Update() => _movementInput = _controls.Player.Movement.ReadValue<float>();
+        public Vector2 GetMovementInput(PlayableCharacter character)
+        {
+            if (character.name == "Human")
+                return _controls.Human.Movement.ReadValue<Vector2>();
+            else if (character.name == "Drone")
+                return _controls.Drone.Movement.ReadValue<Vector2>();
+
+            return Vector2.zero;
+        }
     }
 }

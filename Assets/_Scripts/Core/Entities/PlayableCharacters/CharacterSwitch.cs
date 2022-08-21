@@ -6,23 +6,40 @@ namespace Core.Entities.PlayableCharacters
     public class CharacterSwitch : MonoBehaviour
     {
         [SerializeField] private Input _input;
-        [SerializeField] private PlayableCharacter _firstCharacter;
-        [SerializeField] private PlayableCharacter _secondCharacter;
+        [SerializeField] private PlayableCharacter _human;
+        [SerializeField] private PlayableCharacter _drone;
 
-        private void OnEnable() => _input.Controls.Player.SwitchCharacter.performed += Switch;
-        private void OnDisable() => _input.Controls.Player.SwitchCharacter.performed -= Switch;
+        private void OnEnable()
+        {
+            _input.Controls.Drone.Disable();
+            _input.Controls.Human.SwitchCharacter.performed += Switch;
+            _input.Controls.Drone.SwitchCharacter.performed += Switch;
+        }
+
+        private void OnDisable()
+        {
+            _input.Controls.Human.SwitchCharacter.performed -= Switch;
+            _input.Controls.Drone.SwitchCharacter.performed -= Switch;
+        }
 
         private void Switch(InputAction.CallbackContext ctx)
         {
-            if (_firstCharacter.IsActive)
+            if (_human.IsActive)
             {
-                _firstCharacter.Deactivate();
-                _secondCharacter.Activate();
-                return;
-            }
+                _human.Deactivate();
+                _drone.Activate();
 
-            _secondCharacter.Deactivate();
-            _firstCharacter.Activate();
+                _input.Controls.Human.Disable();
+                _input.Controls.Drone.Enable();
+            }
+            else
+            {
+                _drone.Deactivate();
+                _human.Activate();
+
+                _input.Controls.Drone.Disable();
+                _input.Controls.Human.Enable();
+            }
         }
     }
 }

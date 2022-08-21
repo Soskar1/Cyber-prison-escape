@@ -135,31 +135,14 @@ GameObject:
   - component: {fileID: 27906138}
   - component: {fileID: 27906137}
   - component: {fileID: 27906136}
-  - component: {fileID: 27906135}
+  - component: {fileID: 27906140}
   m_Layer: 3
-  m_Name: Playable Character2
+  m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &27906135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27906134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40e90059599839c49a6538fb210f3273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2d: {fileID: 27906138}
-  _speed: 15
-  _acceleration: 7
-  _decceleration: 7
-  _velocityPower: 0.9
 --- !u!114 &27906136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +198,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -237,6 +220,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &27906140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27906134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fc433b795d89b42b48fccb7afe1010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2d: {fileID: 27906138}
+  _speed: 15
+  _acceleration: 7
+  _decceleration: 3
+  _velocityPower: 0.9
 --- !u!1 &195229775
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 1016059727}
   - component: {fileID: 1016059726}
   m_Layer: 3
-  m_Name: Playable Character1
+  m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,8 +743,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 1552405990}
-  _firstCharacter: {fileID: 1016059727}
-  _secondCharacter: {fileID: 27906136}
+  _human: {fileID: 1016059727}
+  _drone: {fileID: 27906136}
 --- !u!114 &1552405993
 MonoBehaviour:
   m_ObjectHideFlags: 0
