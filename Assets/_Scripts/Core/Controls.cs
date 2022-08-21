@@ -44,6 +44,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6c5bd56-d21b-4e9d-b8ec-a15562d95792"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""SwitchCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c564a714-3b46-456d-86e0-a969bb4c5759"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -209,6 +229,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Human = asset.FindActionMap("Human", throwIfNotFound: true);
         m_Human_Movement = m_Human.FindAction("Movement", throwIfNotFound: true);
         m_Human_SwitchCharacter = m_Human.FindAction("SwitchCharacter", throwIfNotFound: true);
+        m_Human_Jump = m_Human.FindAction("Jump", throwIfNotFound: true);
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Movement = m_Drone.FindAction("Movement", throwIfNotFound: true);
@@ -274,12 +295,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private IHumanActions m_HumanActionsCallbackInterface;
     private readonly InputAction m_Human_Movement;
     private readonly InputAction m_Human_SwitchCharacter;
+    private readonly InputAction m_Human_Jump;
     public struct HumanActions
     {
         private @Controls m_Wrapper;
         public HumanActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Human_Movement;
         public InputAction @SwitchCharacter => m_Wrapper.m_Human_SwitchCharacter;
+        public InputAction @Jump => m_Wrapper.m_Human_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Human; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -295,6 +318,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SwitchCharacter.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnSwitchCharacter;
                 @SwitchCharacter.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnSwitchCharacter;
                 @SwitchCharacter.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnSwitchCharacter;
+                @Jump.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_HumanActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +331,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SwitchCharacter.started += instance.OnSwitchCharacter;
                 @SwitchCharacter.performed += instance.OnSwitchCharacter;
                 @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -363,6 +392,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IDroneActions
     {
