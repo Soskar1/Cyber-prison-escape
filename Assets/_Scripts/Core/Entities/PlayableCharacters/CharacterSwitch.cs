@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ namespace Core.Entities.PlayableCharacters
         [SerializeField] private Input _input;
         [SerializeField] private PlayableCharacter _human;
         [SerializeField] private PlayableCharacter _drone;
+
+        public Action CharacterSwitching;
 
         private void OnEnable()
         {
@@ -23,6 +26,8 @@ namespace Core.Entities.PlayableCharacters
 
         private void Switch(InputAction.CallbackContext ctx)
         {
+            CharacterSwitching?.Invoke();
+
             if (_human.IsActive)
             {
                 _human.Deactivate();

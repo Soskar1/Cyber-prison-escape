@@ -241,6 +241,7 @@ MonoBehaviour:
   _flipping: {fileID: 27906143}
   _input: {fileID: 1552405990}
   _isActive: 0
+  _characterSwitch: {fileID: 1552405992}
   _grabbing: {fileID: 27906142}
 --- !u!114 &27906142
 MonoBehaviour:

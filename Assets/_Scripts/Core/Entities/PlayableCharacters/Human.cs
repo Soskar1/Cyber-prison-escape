@@ -28,6 +28,9 @@ namespace Core.Entities.PlayableCharacters
         {
             base.Update();
 
+            if (!IsActive)
+                return;
+
             if (_shooting.CurrentWeapon != null)
                 _aiming.LookAt(_input.GetWorldMousePosition());
         }

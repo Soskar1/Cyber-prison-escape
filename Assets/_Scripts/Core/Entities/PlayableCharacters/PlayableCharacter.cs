@@ -12,9 +12,6 @@ namespace Core.Entities.PlayableCharacters
 
         public virtual void Update()
         {
-            if (!_isActive)
-                return;
-
             _movementInput = _input.GetMovementInput(this);
 
             if (_flipping.FacingRight && _movementInput.x < 0 ||
@@ -22,12 +19,7 @@ namespace Core.Entities.PlayableCharacters
                 _flipping.Flip();
         }
 
-        private void FixedUpdate()
-        {
-            if (_isActive)
-                Move(_movementInput);
-        }
-
+        private void FixedUpdate() => Move(_movementInput);
         public void Activate() => _isActive = true;
         public void Deactivate() => _isActive = false;
     }
