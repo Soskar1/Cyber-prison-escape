@@ -1,4 +1,4 @@
-using Core.Items;
+using Core.GrabbableObjects.Items;
 using UnityEngine;
 
 namespace Core.Tech

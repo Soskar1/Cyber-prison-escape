@@ -1,4 +1,4 @@
-namespace Core.Items
+namespace Core.GrabbableObjects.Items
 {
     public class Crate : Item
     {

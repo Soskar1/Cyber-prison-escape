@@ -1,4 +1,4 @@
-using Core.Items;
+using Core.GrabbableObjects;
 using UnityEngine;
 
 namespace Core.Entities.PlayableCharacters
@@ -6,6 +6,7 @@ namespace Core.Entities.PlayableCharacters
     public class Grabbing : MonoBehaviour
     {
         [SerializeField] private Collider2D _body;
+        [SerializeField] private Flipping _flipping;
 
         [Header("Raycast")]
         [SerializeField] private Transform _grabCheck;
@@ -21,6 +22,7 @@ namespace Core.Entities.PlayableCharacters
                 item.Grab();
                 item.GetTransform.parent = transform;
                 Physics2D.IgnoreCollision(_body, item.GetTransform.GetComponent<Collider2D>(), true);
+                _flipping.Flipped += item.FlipObject;
                 _currentGrabbedItem = item;
             }
         }
@@ -33,6 +35,7 @@ namespace Core.Entities.PlayableCharacters
             _currentGrabbedItem.Release();
             _currentGrabbedItem.GetTransform.parent = null;
             Physics2D.IgnoreCollision(_body, _currentGrabbedItem.GetTransform.GetComponent<Collider2D>(), false);
+            _flipping.Flipped -= _currentGrabbedItem.FlipObject;
             _currentGrabbedItem = null;
         }
 

@@ -33,5 +33,10 @@ namespace Core.Entities.PlayableCharacters
             if (_groundCheck.CheckForGround())
                 _jumping.Jump();
         }
+
+        public override void Die()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

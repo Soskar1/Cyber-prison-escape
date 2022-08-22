@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.Items
+namespace Core.GrabbableObjects
 {
     public interface IGrabbable
     {
@@ -11,5 +11,7 @@ namespace Core.Items
         void Grab();
 
         void Release();
+
+        void FlipObject();
     }
 }

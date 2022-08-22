@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-namespace Core.Entities
+namespace Core
 {
     public class Flipping : MonoBehaviour
     {
@@ -10,6 +11,8 @@ namespace Core.Entities
         private Transform _transform;
         private Vector3 _visualRotation = new Vector3(0, 180, 0);
 
+        public Action Flipped;
+
         private void Awake() => _transform = transform;
 
         public void Flip()
@@ -17,6 +20,8 @@ namespace Core.Entities
             _facingRight = !_facingRight;
 
             transform.Rotate(_visualRotation);
+
+            Flipped?.Invoke();
         }
 
         public void FaceTheTarget(Vector2 target)
