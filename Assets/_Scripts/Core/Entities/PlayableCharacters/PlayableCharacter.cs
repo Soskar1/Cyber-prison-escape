@@ -10,7 +10,7 @@ namespace Core.Entities.PlayableCharacters
 
         private Vector2 _movementInput;
 
-        private void Update()
+        public virtual void Update()
         {
             if (!_isActive)
                 return;

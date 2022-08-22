@@ -12,35 +12,31 @@ namespace Core.Weapons
         [SerializeField] private Shooting _shooting;
 
         [SerializeField] private List<Weapon> _weapons = new List<Weapon>();
-        [SerializeField] private List<GameObject> _objects = new List<GameObject>();
-        private Dictionary<WeaponConfiguration, GameObject> _inventory = new Dictionary<WeaponConfiguration, GameObject>();
+        private Dictionary<WeaponConfiguration, Weapon> _inventory = new Dictionary<WeaponConfiguration, Weapon>();
 
         private void Awake()
         {
-            if (_weapons.Count != _objects.Count)
-                throw new Exception("Weapon count not equal to object count");
-
             for (int index = 0; index < _weapons.Count; index++)
-                _inventory.Add(_weapons[index].Config, _objects[index]);
+                _inventory.Add(_weapons[index].Config, _weapons[index]);
         }
 
         public void EquipWeapon(Weapon newWeapon)
         {
             DeactivateAllActiveWeapons();
 
-            if (_inventory.TryGetValue(newWeapon.Config, out GameObject weaponObject))
+            if (_inventory.TryGetValue(newWeapon.Config, out Weapon weapon))
             {
-                weaponObject.SetActive(true);
-                _shooting.CurrentWeapon = newWeapon;
+                weapon.gameObject.SetActive(true);
+                _shooting.CurrentWeapon = weapon;
             }
         }
 
         private void DeactivateAllActiveWeapons()
         {
-            var activeObjects = _objects.Where(x => x.activeSelf);
+            var activeObjects = _weapons.Where(x => x.gameObject.activeSelf);
 
             foreach (var obj in activeObjects)
-                obj.SetActive(false);
+                obj.gameObject.SetActive(false);
         }
     }
 }

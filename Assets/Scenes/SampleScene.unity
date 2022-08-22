@@ -297,8 +297,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116735596}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4999999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -942,7 +942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568990373}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.037, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1356,6 +1356,7 @@ MonoBehaviour:
   _input: {fileID: 1552405990}
   _isActive: 1
   _inventory: {fileID: 1645750123}
+  _aiming: {fileID: 1645750124}
   _jumping: {fileID: 1016059728}
   _shooting: {fileID: 1016059732}
   _groundCheck: {fileID: 1016059727}
@@ -1564,8 +1565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: f3a5a94d81eeb574a904eb24957c62bd, type: 2}
-  _bullet: {fileID: 0}
-  _shotPos: {fileID: 0}
+  _projectile: {fileID: 1689424441232953825, guid: 3b4dcf5693b6cd44a8198dcb4085f3c5, type: 3}
+  _shotPos: {fileID: 116735597}
 --- !u!1 &1179532854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,8 +1793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: f3a5a94d81eeb574a904eb24957c62bd, type: 2}
-  _bullet: {fileID: 0}
-  _shotPos: {fileID: 0}
+  _projectile: {fileID: 1689424441232953825, guid: 3b4dcf5693b6cd44a8198dcb4085f3c5, type: 3}
+  _shotPos: {fileID: 568990374}
 --- !u!4 &1501340599
 Transform:
   m_ObjectHideFlags: 0
@@ -2009,6 +2010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645750122}
   - component: {fileID: 1645750123}
+  - component: {fileID: 1645750124}
   m_Layer: 3
   m_Name: Inventory (Weapon)
   m_TagString: Untagged
@@ -2047,8 +2049,19 @@ MonoBehaviour:
   _shooting: {fileID: 1016059732}
   _weapons:
   - {fileID: 1501340598}
-  _objects:
-  - {fileID: 1501340597}
+--- !u!114 &1645750124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645750121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f594fa214e44fa54f8f55ca95fb3132c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 0
 --- !u!1 &1711687632
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ namespace Core.GrabbableObjects.Weapons
 
         public virtual void Shoot()
         {
-            //_weapon.Shoot();
+            _weapon.Shoot();
             AddKnockback();
         }
 
