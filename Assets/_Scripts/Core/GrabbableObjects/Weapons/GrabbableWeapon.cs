@@ -1,3 +1,4 @@
+using Core.Weapons;
 using UnityEngine;
 
 namespace Core.GrabbableObjects.Weapons
@@ -6,14 +7,14 @@ namespace Core.GrabbableObjects.Weapons
     public abstract class GrabbableWeapon : GrabbableObject
     {
         [Header("Grabbable Weapon")]
+        [SerializeField] private Weapon _weapon;
         [SerializeField] private Rigidbody2D _rb2d;
-        [SerializeField] private GameObject _bullet;
-        [SerializeField] private Transform _shotPos;
         [SerializeField] private float _knockbackPower;
-        [SerializeField] private float _delay;
         private float _timer;
 
-        private void Awake() => _timer = _delay;
+        public Weapon Weapon => _weapon;
+
+        private void Awake() => _timer = _weapon.Delay;
 
         private void Update()
         {
@@ -23,7 +24,7 @@ namespace Core.GrabbableObjects.Weapons
             if (_timer <= 0)
             {
                 Shoot();
-                _timer = _delay;
+                _timer = _weapon.Delay;
             }
             else
             {
@@ -33,8 +34,7 @@ namespace Core.GrabbableObjects.Weapons
 
         public virtual void Shoot()
         {
-            //Instantiate(_bullet, _shotPos.position, Quaternion.identity);
-            Debug.Log("Выстрел");
+            //_weapon.Shoot();
             AddKnockback();
         }
 
