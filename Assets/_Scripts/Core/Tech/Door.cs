@@ -4,19 +4,19 @@ namespace Core.Tech
 {
     public class Door : MonoBehaviour
     {
-        [SerializeField] private Button _button;
+        [SerializeField] private Technology _tech;
         [SerializeField] private GameObject _door;
 
         private void OnEnable()
         {
-            _button.Pressed += Open;
-            _button.Unpressed += Close;
+            _tech.Triggered += Open;
+            _tech.Deactivated += Close;
         }
 
         private void OnDisable()
         {
-            _button.Pressed -= Open;
-            _button.Unpressed -= Close;
+            _tech.Triggered -= Open;
+            _tech.Deactivated -= Close;
         }
 
         private void Open()

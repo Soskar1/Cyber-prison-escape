@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d56eb34a8fbcb840b233c26d7d744c9, type: 3}
   m_Name: Basic_pistol
   m_EditorClassIdentifier: 
-  delay: 0.5
+  delay: 1

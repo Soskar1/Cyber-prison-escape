@@ -21,5 +21,11 @@ namespace Core
 
             return Vector2.zero;
         }
+
+        public Vector2 GetWorldMousePosition()
+        {
+            Vector2 mousePos = _controls.Human.MousePosition.ReadValue<Vector2>();
+            return Camera.main.ScreenToWorldPoint(mousePos);
+        }
     }
 }

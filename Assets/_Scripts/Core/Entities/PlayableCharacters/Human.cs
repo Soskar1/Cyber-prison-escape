@@ -11,6 +11,7 @@ namespace Core.Entities.PlayableCharacters
     public class Human : PlayableCharacter
     {
         [SerializeField] private WeaponInventory _inventory;
+        [SerializeField] private Aiming _aiming;
         [SerializeField] private Jumping _jumping;
         [SerializeField] private Shooting _shooting;
         [SerializeField] private GroundCheck _groundCheck;
@@ -21,6 +22,14 @@ namespace Core.Entities.PlayableCharacters
 
             if (!IsActive)
                 _input.Controls.Human.Disable();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (_shooting.CurrentWeapon != null)
+                _aiming.LookAt(_input.GetWorldMousePosition());
         }
 
         private void OnEnable()
