@@ -1,6 +1,6 @@
 namespace Core.GrabbableObjects.Weapons
 {
-    public class Pistol : GrabbableWeapon
+    public class GrabbablePistol : GrabbableWeapon
     {
 
     }

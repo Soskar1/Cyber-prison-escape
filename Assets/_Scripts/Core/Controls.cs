@@ -53,6 +53,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5382d50-bee7-468a-86b1-8cd58fe39b1b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""cdf78856-d4d3-4445-81d3-05d79e6dffeb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -108,6 +126,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd75de55-5c58-42de-a347-1194c7084dc5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77107051-d90d-4588-bc77-e5c7c0c99343"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -270,6 +310,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Human_Movement = m_Human.FindAction("Movement", throwIfNotFound: true);
         m_Human_SwitchCharacter = m_Human.FindAction("SwitchCharacter", throwIfNotFound: true);
         m_Human_Jump = m_Human.FindAction("Jump", throwIfNotFound: true);
+        m_Human_Shoot = m_Human.FindAction("Shoot", throwIfNotFound: true);
+        m_Human_MousePosition = m_Human.FindAction("MousePosition", throwIfNotFound: true);
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Movement = m_Drone.FindAction("Movement", throwIfNotFound: true);
@@ -338,6 +380,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Human_Movement;
     private readonly InputAction m_Human_SwitchCharacter;
     private readonly InputAction m_Human_Jump;
+    private readonly InputAction m_Human_Shoot;
+    private readonly InputAction m_Human_MousePosition;
     public struct HumanActions
     {
         private @Controls m_Wrapper;
@@ -345,6 +389,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Human_Movement;
         public InputAction @SwitchCharacter => m_Wrapper.m_Human_SwitchCharacter;
         public InputAction @Jump => m_Wrapper.m_Human_Jump;
+        public InputAction @Shoot => m_Wrapper.m_Human_Shoot;
+        public InputAction @MousePosition => m_Wrapper.m_Human_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Human; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +409,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnJump;
+                @Shoot.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnShoot;
+                @MousePosition.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_HumanActionsCallbackInterface = instance;
             if (instance != null)
@@ -376,6 +428,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -451,6 +509,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     public interface IDroneActions
     {
