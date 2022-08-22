@@ -1480,7 +1480,7 @@ MonoBehaviour:
   _hingeJoint: {fileID: 1108039133}
   _weapon: {fileID: 1108039136}
   _rb2d: {fileID: 1108039134}
-  _knockbackPower: 10
+  _knockbackPower: 5
 --- !u!233 &1108039133
 HingeJoint2D:
   m_ObjectHideFlags: 0

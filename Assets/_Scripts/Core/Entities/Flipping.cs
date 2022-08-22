@@ -1,12 +1,12 @@
-using System;
 using UnityEngine;
+using System;
 
 namespace Core
 {
     public class Flipping : MonoBehaviour
     {
         [SerializeField] private bool _facingRight = true;
-        public bool FacingRight => _facingRight;
+        public bool FacingRight { get => _facingRight; set => _facingRight = value; }
 
         private Transform _transform;
         private Vector3 _visualRotation = new Vector3(0, 180, 0);

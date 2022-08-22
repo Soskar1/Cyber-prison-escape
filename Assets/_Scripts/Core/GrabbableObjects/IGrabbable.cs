@@ -12,6 +12,6 @@ namespace Core.GrabbableObjects
 
         void Release();
 
-        void FlipObject();
+        void ImitateFlipping();
     }
 }

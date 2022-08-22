@@ -21,8 +21,8 @@ namespace Core.Entities.PlayableCharacters
             {
                 item.Grab();
                 item.GetTransform.parent = transform;
+                _flipping.Flipped += item.ImitateFlipping;
                 Physics2D.IgnoreCollision(_body, item.GetTransform.GetComponent<Collider2D>(), true);
-                _flipping.Flipped += item.FlipObject;
                 _currentGrabbedItem = item;
             }
         }
@@ -34,8 +34,8 @@ namespace Core.Entities.PlayableCharacters
 
             _currentGrabbedItem.Release();
             _currentGrabbedItem.GetTransform.parent = null;
+            _flipping.Flipped -= _currentGrabbedItem.ImitateFlipping;
             Physics2D.IgnoreCollision(_body, _currentGrabbedItem.GetTransform.GetComponent<Collider2D>(), false);
-            _flipping.Flipped -= _currentGrabbedItem.FlipObject;
             _currentGrabbedItem = null;
         }
 

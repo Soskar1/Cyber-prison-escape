@@ -26,6 +26,6 @@ namespace Core.GrabbableObjects
             _hingeJoint.enabled = false;
         }
 
-        public void FlipObject() => _flipping.Flip();
+        public void ImitateFlipping() => _flipping.FacingRight = !_flipping.FacingRight;
     }
 }
