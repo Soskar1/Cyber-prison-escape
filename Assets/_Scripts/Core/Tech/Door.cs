@@ -4,8 +4,8 @@ namespace Core.Tech
 {
     public class Door : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
         [SerializeField] private Technology _tech;
-        [SerializeField] private GameObject _door;
 
         private void OnEnable()
         {
@@ -21,12 +21,12 @@ namespace Core.Tech
 
         private void Open()
         {
-            _door.SetActive(false);
+            _animator.SetTrigger("Open");
         }
 
         private void Close()
         {
-            _door.SetActive(true);
+            _animator.SetTrigger("Close");
         }
     }
 }
