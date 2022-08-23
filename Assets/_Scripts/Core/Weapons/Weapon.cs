@@ -11,6 +11,7 @@ namespace Core.Weapons
         [SerializeField] private Bullet _bullet;
         [SerializeField] private BulletPool _pool;
         [SerializeField] private Transform _shotPos;
+        [SerializeField] private LayerMask _target;
         private float _delay;
 
         public WeaponConfiguration Config => _config;
@@ -24,6 +25,7 @@ namespace Core.Weapons
             Bullet bulletInstance = _pool.Pool.GetFreeElement();
             bulletInstance.transform.position = _shotPos.position;
             bulletInstance.transform.rotation = _shotPos.rotation;
+            bulletInstance.Initialize(_target);
         }
     }
 }

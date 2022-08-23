@@ -239,6 +239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flipping: {fileID: 27906143}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 0
   _input: {fileID: 1552405990}
   _isActive: 0
   _characterSwitch: {fileID: 1552405992}
@@ -1700,6 +1703,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flipping: {fileID: 1016059730}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 0
   _input: {fileID: 1552405990}
   _isActive: 1
   _inventory: {fileID: 1645750123}
@@ -1915,6 +1921,9 @@ MonoBehaviour:
   _bullet: {fileID: 1689424441232953825, guid: 3b4dcf5693b6cd44a8198dcb4085f3c5, type: 3}
   _pool: {fileID: 1756987963}
   _shotPos: {fileID: 116735597}
+  _target:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &1179532854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2234,9 @@ MonoBehaviour:
   _bullet: {fileID: 1689424441232953825, guid: 3b4dcf5693b6cd44a8198dcb4085f3c5, type: 3}
   _pool: {fileID: 1756987963}
   _shotPos: {fileID: 568990374}
+  _target:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!4 &1501340599
 Transform:
   m_ObjectHideFlags: 0

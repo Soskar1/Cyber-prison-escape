@@ -86,6 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 5
+  _obstacles:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!114 &4731529710576983592
 MonoBehaviour:
   m_ObjectHideFlags: 0

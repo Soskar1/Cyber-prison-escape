@@ -6,7 +6,10 @@ namespace Core.Entities
     public abstract class Entity : MonoBehaviour, IHittable
     {
         [SerializeField] protected Flipping _flipping;
+        [SerializeField] private LayerMask _layer;
         private IMovable _movable;
+
+        public LayerMask Layer => _layer;
 
         public virtual void Awake() => _movable = GetComponent<IMovable>();
 
