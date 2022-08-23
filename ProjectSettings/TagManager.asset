@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1748163521
+    locked: 0
   - name: Chest
     uniqueID: 48030617
     locked: 0
