@@ -11,6 +11,7 @@ namespace Core
         {
             //Player & Player
             Physics2D.IgnoreLayerCollision(3, 3);
+            Physics2D.IgnoreLayerCollision(3, 11);
 
             _bulletPool.InitializePool();
         }
