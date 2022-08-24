@@ -15,10 +15,10 @@ TagManager:
   - Item
   - Crate
   - Tech
-  - Human
-  - Drone
-  - DeathZone
   - Enemy
+  - Chest
+  - 
+  - 
   - 
   - 
   - 
@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1748163521
+    locked: 0
+  - name: Chest
+    uniqueID: 48030617
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Entity
+    uniqueID: 543091911
     locked: 0

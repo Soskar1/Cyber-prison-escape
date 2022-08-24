@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Core.Tech
 {
     public class Door : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
         [SerializeField] private Technology _tech;
-        [SerializeField] private GameObject _door;
+        [SerializeField] private Collider2D _collider;
 
         private void OnEnable()
         {
@@ -21,12 +23,14 @@ namespace Core.Tech
 
         private void Open()
         {
-            _door.SetActive(false);
+            _animator.SetTrigger("Open");
+            _collider.enabled = false;
         }
 
         private void Close()
         {
-            _door.SetActive(true);
+            _animator.SetTrigger("Close");
+            _collider.enabled = true;
         }
     }
 }
