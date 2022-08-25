@@ -1,5 +1,6 @@
 using Core.Entities.PlayableCharacters;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Core.Tech
 {
@@ -12,6 +13,7 @@ namespace Core.Tech
         [Header("Visual")]
         [SerializeField] private SpriteRenderer _laserRenderer;
         [SerializeField] private GameObject _particles;
+        [SerializeField] private Light2D _light;
 
         private void OnEnable()
         {
@@ -29,6 +31,7 @@ namespace Core.Tech
         {
             _collider.enabled = false;
             _laserRenderer.enabled = false;
+            _light.enabled = false;
             _particles.SetActive(false);
         }
 
@@ -36,6 +39,7 @@ namespace Core.Tech
         {
             _collider.enabled = true;
             _laserRenderer.enabled = true;
+            _light.enabled = true;
             _particles.SetActive(true);
         }
 
