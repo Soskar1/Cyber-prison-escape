@@ -8,6 +8,7 @@ namespace Core.Entities.PlayableCharacters
     [RequireComponent(typeof(Jumping))]
     [RequireComponent(typeof(Shooting))]
     [RequireComponent(typeof(GroundCheck))]
+    [RequireComponent(typeof(Interacting))]
     public class Human : PlayableCharacter
     {
         [SerializeField] private WeaponInventory _inventory;
@@ -15,6 +16,7 @@ namespace Core.Entities.PlayableCharacters
         [SerializeField] private Jumping _jumping;
         [SerializeField] private Shooting _shooting;
         [SerializeField] private GroundCheck _groundCheck;
+        [SerializeField] private Interacting _interacting;
 
         public override void Awake()
         {
@@ -39,12 +41,14 @@ namespace Core.Entities.PlayableCharacters
         {
             _input.Controls.Human.Jump.performed += TryJump;
             _input.Controls.Human.Shoot.performed += Shoot;
+            _input.Controls.Human.Interact.performed += Interact;
         }
 
         private void OnDisable()
         {
             _input.Controls.Human.Jump.performed -= TryJump;
             _input.Controls.Human.Shoot.performed -= Shoot;
+            _input.Controls.Human.Interact.performed -= Interact;
         }
 
         private void TryJump(InputAction.CallbackContext ctx)
@@ -54,6 +58,8 @@ namespace Core.Entities.PlayableCharacters
         }
 
         private void Shoot(InputAction.CallbackContext ctx) => _shooting.TryShoot();
+
+        private void Interact(InputAction.CallbackContext ctx) => _interacting.TryInteract();
 
         public override void Die()
         {

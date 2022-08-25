@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6d6663c-a604-4976-a42b-b81b92a0b902"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +157,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b46b2d9e-d3fb-4152-a3be-323092570fec"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""TryInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -312,6 +332,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Human_Jump = m_Human.FindAction("Jump", throwIfNotFound: true);
         m_Human_Shoot = m_Human.FindAction("Shoot", throwIfNotFound: true);
         m_Human_MousePosition = m_Human.FindAction("MousePosition", throwIfNotFound: true);
+        m_Human_Interact = m_Human.FindAction("TryInteract", throwIfNotFound: true);
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Movement = m_Drone.FindAction("Movement", throwIfNotFound: true);
@@ -382,6 +403,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Human_Jump;
     private readonly InputAction m_Human_Shoot;
     private readonly InputAction m_Human_MousePosition;
+    private readonly InputAction m_Human_Interact;
     public struct HumanActions
     {
         private @Controls m_Wrapper;
@@ -391,6 +413,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Human_Jump;
         public InputAction @Shoot => m_Wrapper.m_Human_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_Human_MousePosition;
+        public InputAction @Interact => m_Wrapper.m_Human_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Human; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -415,6 +438,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
+                @Interact.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_HumanActionsCallbackInterface = instance;
             if (instance != null)
@@ -434,6 +460,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -511,6 +540,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IDroneActions
     {
