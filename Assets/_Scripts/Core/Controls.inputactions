@@ -282,6 +282,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "System",
+            "id": "a7ede3bb-ed93-4225-bb0c-057a616f045d",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "24dc9355-910b-4711-a41b-ad5d17faf80f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "921505f6-d00e-4d89-9c08-14ae36d92427",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
