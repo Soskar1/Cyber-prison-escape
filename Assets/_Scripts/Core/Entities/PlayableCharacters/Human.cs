@@ -61,11 +61,6 @@ namespace Core.Entities.PlayableCharacters
 
         private void Interact(InputAction.CallbackContext ctx) => _interacting.TryInteract();
 
-        public override void Die()
-        {
-            gameObject.SetActive(false);
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out GrabbableWeapon grabbableWeapon))

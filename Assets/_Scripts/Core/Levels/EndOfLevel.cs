@@ -1,5 +1,6 @@
 using Core.Entities.PlayableCharacters;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core.Levels
 {
@@ -18,7 +19,7 @@ namespace Core.Levels
 
             if (collision.GetComponent<PlayableCharacter>() != null)
                 if (_humanReachedTheEnd && _droneReachedTheEnd)
-                    Debug.Log("Load next level");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
