@@ -33,10 +33,5 @@ namespace Core.Entities.PlayableCharacters
 
         private void GrabItem(InputAction.CallbackContext ctx) => _grabbing.TryGrabItem();
         private void ReleaseItem(InputAction.CallbackContext ctx) => _grabbing.TryReleaseItem();
-
-        public override void Die()
-        {
-            gameObject.SetActive(false);
-        }
     }
 }

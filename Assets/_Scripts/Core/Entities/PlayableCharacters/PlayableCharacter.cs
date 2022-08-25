@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core.Entities.PlayableCharacters
 {
@@ -27,5 +28,11 @@ namespace Core.Entities.PlayableCharacters
         private void FixedUpdate() => Move(_movementInput);
         public void Activate() => _isActive = true;
         public void Deactivate() => _isActive = false;
+
+        public override void Die()
+        {
+            gameObject.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

@@ -6,28 +6,29 @@ namespace Core.Tech
 {
     public class CrateButton : Technology
     {
-        [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Light2D _light;
-        [SerializeField] private Sprite _triggeredSprite;
-        [SerializeField] private Sprite _defaultSprite;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.GetComponent<Crate>() != null)
-            {
-                _renderer.sprite = _triggeredSprite;
-                _light.color = Color.green;
-                Triggered?.Invoke();
-            }
+                Trigger();
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.GetComponent<Crate>() != null)
-            {
-                _renderer.sprite = _defaultSprite;
-                _light.color = Color.red;
-                Deactivated?.Invoke();
-            }
+                Deactivate();
+        }
+
+        public override void Trigger()
+        {
+            _light.color = Color.green;
+            base.Trigger();
+        }
+
+        protected override void Deactivate()
+        {
+            _light.color = Color.red;
+            base.Deactivate();
         }
     }
 }

@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6d6663c-a604-4976-a42b-b81b92a0b902"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +157,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b46b2d9e-d3fb-4152-a3be-323092570fec"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -284,6 +304,34 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""System"",
+            ""id"": ""a7ede3bb-ed93-4225-bb0c-057a616f045d"",
+            ""actions"": [
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""24dc9355-910b-4711-a41b-ad5d17faf80f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""921505f6-d00e-4d89-9c08-14ae36d92427"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -312,12 +360,16 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Human_Jump = m_Human.FindAction("Jump", throwIfNotFound: true);
         m_Human_Shoot = m_Human.FindAction("Shoot", throwIfNotFound: true);
         m_Human_MousePosition = m_Human.FindAction("MousePosition", throwIfNotFound: true);
+        m_Human_Interact = m_Human.FindAction("Interact", throwIfNotFound: true);
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Movement = m_Drone.FindAction("Movement", throwIfNotFound: true);
         m_Drone_SwitchCharacter = m_Drone.FindAction("SwitchCharacter", throwIfNotFound: true);
         m_Drone_Grab = m_Drone.FindAction("Grab", throwIfNotFound: true);
         m_Drone_Release = m_Drone.FindAction("Release", throwIfNotFound: true);
+        // System
+        m_System = asset.FindActionMap("System", throwIfNotFound: true);
+        m_System_Restart = m_System.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,6 +434,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Human_Jump;
     private readonly InputAction m_Human_Shoot;
     private readonly InputAction m_Human_MousePosition;
+    private readonly InputAction m_Human_Interact;
     public struct HumanActions
     {
         private @Controls m_Wrapper;
@@ -391,6 +444,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Human_Jump;
         public InputAction @Shoot => m_Wrapper.m_Human_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_Human_MousePosition;
+        public InputAction @Interact => m_Wrapper.m_Human_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Human; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -415,6 +469,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnMousePosition;
+                @Interact.started -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_HumanActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_HumanActionsCallbackInterface = instance;
             if (instance != null)
@@ -434,6 +491,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -495,6 +555,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public DroneActions @Drone => new DroneActions(this);
+
+    // System
+    private readonly InputActionMap m_System;
+    private ISystemActions m_SystemActionsCallbackInterface;
+    private readonly InputAction m_System_Restart;
+    public struct SystemActions
+    {
+        private @Controls m_Wrapper;
+        public SystemActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Restart => m_Wrapper.m_System_Restart;
+        public InputActionMap Get() { return m_Wrapper.m_System; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SystemActions set) { return set.Get(); }
+        public void SetCallbacks(ISystemActions instance)
+        {
+            if (m_Wrapper.m_SystemActionsCallbackInterface != null)
+            {
+                @Restart.started -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
+            }
+            m_Wrapper.m_SystemActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
+            }
+        }
+    }
+    public SystemActions @System => new SystemActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -511,6 +604,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IDroneActions
     {
@@ -518,5 +612,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnSwitchCharacter(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnRelease(InputAction.CallbackContext context);
+    }
+    public interface ISystemActions
+    {
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
