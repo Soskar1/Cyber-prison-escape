@@ -7,7 +7,6 @@ namespace Core.GrabbableObjects
     public abstract class GrabbableObject : MonoBehaviour, IGrabbable
     {
         [Header("Grabbable Object")]
-        [SerializeField] protected Flipping _flipping;
         [SerializeField] private HingeJoint2D _hingeJoint;
 
         private bool _isGrabbed = false;
@@ -25,7 +24,5 @@ namespace Core.GrabbableObjects
             _isGrabbed = false;
             _hingeJoint.enabled = false;
         }
-
-        public void ImitateFlipping() => _flipping.FacingRight = !_flipping.FacingRight;
     }
 }

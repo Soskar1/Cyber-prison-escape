@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchCharacter",
-                    "type": "Button",
-                    "id": "6f50175d-25c6-4990-b650-93e060530aa1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "b6c5bd56-d21b-4e9d-b8ec-a15562d95792",
@@ -96,19 +87,19 @@
                 },
                 {
                     "name": "",
-                    "id": "19e485d0-d441-428b-9779-ff8c908f32d1",
-                    "path": "<Keyboard>/f",
+                    "id": "c564a714-3b46-456d-86e0-a969bb4c5759",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "SwitchCharacter",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c564a714-3b46-456d-86e0-a969bb4c5759",
-                    "path": "<Keyboard>/w",
+                    "id": "62c8fbda-9bca-4671-96e8-416ecae12a47",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
@@ -165,15 +156,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchCharacter",
-                    "type": "Button",
-                    "id": "d029f2d7-925d-4427-9c97-71412cfe88d0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Grab",
                     "type": "Button",
                     "id": "bfad2566-cb61-4ca1-a279-8545895c74d0",
@@ -188,7 +170,7 @@
                     "id": "cd54c5f1-4aef-4e57-8278-a3a75ecec40e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -250,34 +232,23 @@
                 },
                 {
                     "name": "",
-                    "id": "51dbb939-19d4-46e3-b690-3763c93c0095",
-                    "path": "<Keyboard>/f",
+                    "id": "de0ddd8e-c89b-419c-ba99-4e7d12de4161",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "SwitchCharacter",
+                    "action": "Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "6d2f82c1-003e-4a2b-bfb6-db1876280be9",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de0ddd8e-c89b-419c-ba99-4e7d12de4161",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -304,6 +275,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchCharacter",
+                    "type": "Button",
+                    "id": "3f15eba4-e11d-4039-9d84-d48931ba7910",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -326,6 +306,17 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "SkipLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a99656e-0b34-4aee-8ef5-b6fbefe8d887",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "SwitchCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
