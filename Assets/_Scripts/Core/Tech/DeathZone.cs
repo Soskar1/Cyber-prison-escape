@@ -17,14 +17,20 @@ namespace Core.Tech
 
         private void OnEnable()
         {
-            _tech.Triggered += TurnOff;
-            _tech.Deactivated += TurnOn;
+            if (_tech != null)
+            {
+                _tech.Triggered += TurnOff;
+                _tech.Deactivated += TurnOn;
+            }
         }
 
         private void OnDisable()
         {
-            _tech.Triggered -= TurnOff;
-            _tech.Deactivated -= TurnOn;
+            if (_tech != null)
+            {
+                _tech.Triggered -= TurnOff;
+                _tech.Deactivated -= TurnOn;
+            }
         }
 
         private void TurnOff()
