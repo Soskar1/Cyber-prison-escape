@@ -88,7 +88,7 @@ MonoBehaviour:
   _lifeTime: 5
   _obstacles:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 321
 --- !u!114 &4731529710576983592
 MonoBehaviour:
   m_ObjectHideFlags: 0
