@@ -7,6 +7,7 @@ namespace Core.Entities.PlayableCharacters
     public abstract class PlayableCharacter : Entity
     {
         [SerializeField] protected Input _input;
+        [SerializeField] private Level _level;
         [SerializeField] private Animator _animator;
         [SerializeField] private bool _isActive = false;
         public bool IsActive => _isActive;
@@ -32,7 +33,7 @@ namespace Core.Entities.PlayableCharacters
         public override void Die()
         {
             gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _level.SetRestartTrigger();
         }
     }
 }

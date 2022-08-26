@@ -50,3 +50,6 @@ TagManager:
   - name: Entity
     uniqueID: 543091911
     locked: 0
+  - name: Foreground
+    uniqueID: 3274774315
+    locked: 0

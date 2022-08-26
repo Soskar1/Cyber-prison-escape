@@ -6,6 +6,8 @@ namespace Core.Levels
 {
     public class EndOfLevel : MonoBehaviour
     {
+        [SerializeField] private Level _level;
+
         private bool _humanReachedTheEnd = false;
         private bool _droneReachedTheEnd = false;
 
@@ -19,7 +21,7 @@ namespace Core.Levels
 
             if (collision.GetComponent<PlayableCharacter>() != null)
                 if (_humanReachedTheEnd && _droneReachedTheEnd)
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    _level.SetEndTrigger();
         }
 
         private void OnTriggerExit2D(Collider2D collision)

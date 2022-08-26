@@ -310,7 +310,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""id"": ""a7ede3bb-ed93-4225-bb0c-057a616f045d"",
             ""actions"": [
                 {
-                    ""name"": ""Restart"",
+                    ""name"": ""RestartCurrentLevel"",
                     ""type"": ""Button"",
                     ""id"": ""24dc9355-910b-4711-a41b-ad5d17faf80f"",
                     ""expectedControlType"": ""Button"",
@@ -327,7 +327,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Restart"",
+                    ""action"": ""RestartCurrentLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -369,7 +369,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Drone_Release = m_Drone.FindAction("Release", throwIfNotFound: true);
         // System
         m_System = asset.FindActionMap("System", throwIfNotFound: true);
-        m_System_Restart = m_System.FindAction("Restart", throwIfNotFound: true);
+        m_System_Restart = m_System.FindAction("RestartCurrentLevel", throwIfNotFound: true);
     }
 
     public void Dispose()

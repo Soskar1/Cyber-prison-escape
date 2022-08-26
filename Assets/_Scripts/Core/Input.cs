@@ -12,6 +12,9 @@ namespace Core
         private void OnEnable() => _controls.Enable();
         private void OnDisable() => _controls.Disable();
 
+        public void TurnOnSystemControls() => _controls.System.Enable();
+        public void TurnOffSystemControls() => _controls.System.Disable();
+
         public Vector2 GetMovementInput(PlayableCharacter character)
         {
             if (character.name == "Human")
