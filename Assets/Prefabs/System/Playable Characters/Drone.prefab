@@ -148,6 +148,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _input: {fileID: 0}
+  _level: {fileID: 0}
   _animator: {fileID: 571710028939342075}
   _isActive: 0
   _characterSwitch: {fileID: 0}
@@ -184,7 +185,7 @@ MonoBehaviour:
   _body: {fileID: 571710028939342074}
   _flipping: {fileID: 571710028939342020}
   _grabCheck: {fileID: 571710030118391563}
-  _distance: 0.25
+  _distance: 0.34
   _itemLayer:
     serializedVersion: 2
     m_Bits: 384
@@ -309,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571710030118391572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.018, y: -0.397, z: 0}
+  m_LocalPosition: {x: -0.018, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -52,5 +52,11 @@ namespace Core.Entities.PlayableCharacters
 
             return false;
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(_grabCheck.position, new Vector2(_grabCheck.position.x, _grabCheck.position.y - _distance));
+        }
     }
 }
