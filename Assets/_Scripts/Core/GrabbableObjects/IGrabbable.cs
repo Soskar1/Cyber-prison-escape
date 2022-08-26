@@ -11,7 +11,5 @@ namespace Core.GrabbableObjects
         void Grab();
 
         void Release();
-
-        void ImitateFlipping();
     }
 }

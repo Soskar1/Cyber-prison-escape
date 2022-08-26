@@ -32,18 +32,6 @@ namespace Core.GrabbableObjects.Weapons
             }
         }
 
-        public virtual void Shoot()
-        {
-            _weapon.Shoot();
-            AddKnockback();
-        }
-
-        public virtual void AddKnockback()
-        {
-            if (_flipping.FacingRight)
-                _rb2d.AddForce(Vector2.left * _knockbackPower, ForceMode2D.Impulse);
-            else
-                _rb2d.AddForce(Vector2.right * _knockbackPower, ForceMode2D.Impulse);
-        }
+        public virtual void Shoot() => _weapon.Shoot();
     }
 }

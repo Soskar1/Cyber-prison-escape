@@ -12,17 +12,8 @@ namespace Core.Entities.PlayableCharacters
 
         public Action CharacterSwitching;
 
-        private void OnEnable()
-        {
-            _input.Controls.Human.SwitchCharacter.performed += Switch;
-            _input.Controls.Drone.SwitchCharacter.performed += Switch;
-        }
-
-        private void OnDisable()
-        {
-            _input.Controls.Human.SwitchCharacter.performed -= Switch;
-            _input.Controls.Drone.SwitchCharacter.performed -= Switch;
-        }
+        private void OnEnable() => _input.Controls.System.SwitchCharacter.performed += Switch;
+        private void OnDisable() => _input.Controls.System.SwitchCharacter.performed -= Switch;
 
         private void Switch(InputAction.CallbackContext ctx)
         {

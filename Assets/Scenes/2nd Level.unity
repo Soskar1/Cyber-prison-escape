@@ -428,8 +428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -519.42, y: -285.77}
-  m_SizeDelta: {x: 140.6984, y: 50}
+  m_AnchoredPosition: {x: -518.6609, y: -286.17}
+  m_SizeDelta: {x: 166.8494, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598398384
 MonoBehaviour:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold "Space" to grab object (drone only)
+  m_text: Press "E" to grab/release object (drone only)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -620,7 +620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -519.42, y: -284.08978}
+  m_AnchoredPosition: {x: -518.66, y: -284.24}
   m_SizeDelta: {x: 140.6984, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1008375338
