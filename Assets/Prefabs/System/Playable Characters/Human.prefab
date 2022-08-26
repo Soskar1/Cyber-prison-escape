@@ -218,6 +218,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _input: {fileID: 0}
+  _level: {fileID: 0}
   _animator: {fileID: 2097886351816668054}
   _isActive: 1
   _inventory: {fileID: 2097886352530719656}
@@ -274,7 +275,7 @@ MonoBehaviour:
   _radius: 0.23
   _groundLayers:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 2880
 --- !u!114 &2097886351816668049
 MonoBehaviour:
   m_ObjectHideFlags: 0

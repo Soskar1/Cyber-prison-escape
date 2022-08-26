@@ -310,9 +310,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""id"": ""a7ede3bb-ed93-4225-bb0c-057a616f045d"",
             ""actions"": [
                 {
-                    ""name"": ""RestartCurrentLevel"",
+                    ""name"": ""Restart"",
                     ""type"": ""Button"",
                     ""id"": ""24dc9355-910b-4711-a41b-ad5d17faf80f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b2c809a-fff4-4e29-9386-6d5e828088ff"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
@@ -327,7 +336,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""RestartCurrentLevel"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81e0ea4e-1f89-4cd6-b9fd-a9055f34742f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SkipLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -369,7 +389,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Drone_Release = m_Drone.FindAction("Release", throwIfNotFound: true);
         // System
         m_System = asset.FindActionMap("System", throwIfNotFound: true);
-        m_System_Restart = m_System.FindAction("RestartCurrentLevel", throwIfNotFound: true);
+        m_System_Restart = m_System.FindAction("Restart", throwIfNotFound: true);
+        m_System_SkipLevel = m_System.FindAction("SkipLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -560,11 +581,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_System;
     private ISystemActions m_SystemActionsCallbackInterface;
     private readonly InputAction m_System_Restart;
+    private readonly InputAction m_System_SkipLevel;
     public struct SystemActions
     {
         private @Controls m_Wrapper;
         public SystemActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Restart => m_Wrapper.m_System_Restart;
+        public InputAction @SkipLevel => m_Wrapper.m_System_SkipLevel;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -577,6 +600,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Restart.started -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_SystemActionsCallbackInterface.OnRestart;
+                @SkipLevel.started -= m_Wrapper.m_SystemActionsCallbackInterface.OnSkipLevel;
+                @SkipLevel.performed -= m_Wrapper.m_SystemActionsCallbackInterface.OnSkipLevel;
+                @SkipLevel.canceled -= m_Wrapper.m_SystemActionsCallbackInterface.OnSkipLevel;
             }
             m_Wrapper.m_SystemActionsCallbackInterface = instance;
             if (instance != null)
@@ -584,6 +610,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @SkipLevel.started += instance.OnSkipLevel;
+                @SkipLevel.performed += instance.OnSkipLevel;
+                @SkipLevel.canceled += instance.OnSkipLevel;
             }
         }
     }
@@ -616,5 +645,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface ISystemActions
     {
         void OnRestart(InputAction.CallbackContext context);
+        void OnSkipLevel(InputAction.CallbackContext context);
     }
 }

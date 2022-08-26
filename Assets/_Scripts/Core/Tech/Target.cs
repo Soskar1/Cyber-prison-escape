@@ -8,7 +8,10 @@ namespace Core.Tech
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.GetComponent<Projectile>() != null)
-                Triggered?.Invoke();
+            {
+                collision.gameObject.SetActive(false);
+                Trigger();
+            }
         }
     }
 }

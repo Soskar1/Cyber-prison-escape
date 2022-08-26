@@ -9,10 +9,20 @@ namespace Core
         [SerializeField] private Input _input;
         [SerializeField] private Animator _animator;
 
-        private void OnEnable() => _input.Controls.System.Restart.performed += SystemRestartLevel;
-        private void OnDisable() => _input.Controls.System.Restart.performed -= SystemRestartLevel;
+        private void OnEnable()
+        {
+            _input.Controls.System.Restart.performed += SystemRestartLevel;
+            _input.Controls.System.SkipLevel.performed += SystemSkipLevel;
+        }
+
+        private void OnDisable()
+        {
+            _input.Controls.System.Restart.performed -= SystemRestartLevel;
+            _input.Controls.System.SkipLevel.performed -= SystemSkipLevel;
+        }
 
         private void SystemRestartLevel(InputAction.CallbackContext ctx) => SetRestartTrigger();
+        private void SystemSkipLevel(InputAction.CallbackContext ctx) => SetEndTrigger();
 
         public void SetEndTrigger() => _animator.SetTrigger("End");
         public void SetRestartTrigger() => _animator.SetTrigger("Restart");
