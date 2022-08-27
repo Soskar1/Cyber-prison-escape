@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5706058913880350380}
   - component: {fileID: 5706058913880350379}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5706058914720059586}
   - component: {fileID: 5706058914720059585}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5706058914972657358}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
