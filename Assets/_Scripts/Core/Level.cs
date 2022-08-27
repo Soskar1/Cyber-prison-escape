@@ -4,10 +4,16 @@ using UnityEngine.SceneManagement;
 
 namespace Core
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Level : MonoBehaviour
     {
         [SerializeField] private Input _input;
         [SerializeField] private Animator _animator;
+
+        [Header("SFX")]
+        [SerializeField] private AudioSource _source;
+        [SerializeField] private AudioClip _endClip;
+        [SerializeField] private AudioClip _startClip;
 
         private void OnEnable()
         {
@@ -24,7 +30,13 @@ namespace Core
         private void SystemRestartLevel(InputAction.CallbackContext ctx) => SetRestartTrigger();
         private void SystemSkipLevel(InputAction.CallbackContext ctx) => SetEndTrigger();
 
-        public void SetEndTrigger() => _animator.SetTrigger("End");
+        public void SetEndTrigger()
+        {
+            _animator.SetTrigger("End");
+            _source.clip = _endClip;
+            _source.Play();
+        }
+
         public void SetRestartTrigger() => _animator.SetTrigger("Restart");
 
         public void RestartCurrentLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

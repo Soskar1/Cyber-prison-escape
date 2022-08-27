@@ -1,12 +1,17 @@
 using Core.GrabbableObjects;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace Core.Entities.PlayableCharacters
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Grabbing : MonoBehaviour
     {
         [SerializeField] private Collider2D _body;
+        [SerializeField] private AudioSource _source;
+        [SerializeField] private List<AudioClip> _clips;
 
         [Header("Raycast")]
         [SerializeField] private Transform _grabCheck;
@@ -27,6 +32,7 @@ namespace Core.Entities.PlayableCharacters
                 _currentGrabbedItem = item;
 
                 ItemGrabed?.Invoke();
+                PlayRandomSound();
             }
         }
 
@@ -40,6 +46,7 @@ namespace Core.Entities.PlayableCharacters
             _currentGrabbedItem = null;
 
             ItemReleased?.Invoke();
+            PlayRandomSound();
         }
 
         private bool TryGetItem(out IGrabbable item)
@@ -54,6 +61,13 @@ namespace Core.Entities.PlayableCharacters
             }
 
             return false;
+        }
+
+        private void PlayRandomSound()
+        {
+            var clip = _clips[Random.Range(0, _clips.Count)];
+            _source.clip = clip;
+            _source.Play();
         }
 
         private void OnDrawGizmos()
