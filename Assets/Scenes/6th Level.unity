@@ -989,7 +989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -597.8654, y: -341.03275}
+  m_AnchoredPosition: {x: -597.8654, y: -341.68}
   m_SizeDelta: {x: 129.6933, y: 68.222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047625176
@@ -1012,13 +1012,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Crate jump
+  m_text: '<color=green>Crate jump</color>
 
-    Try to grab the crate and the man being the drone. Then
-    take control of the human and jump.'
+    Try to grab the crate and the man
+    being the drone. Then take control of the human and jump.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0cf27a0bbb14a2b439b45b57bf7cb550, type: 2}
+  m_sharedMaterial: {fileID: 4318144273592479332, guid: 0cf27a0bbb14a2b439b45b57bf7cb550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

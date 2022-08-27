@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -515.5, y: -290.01}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 240.2997, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143566186
 MonoBehaviour:
@@ -181,12 +181,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"WASD" to move
+  m_text: '<color=green>"WASD"</color> to move
 
-    "F" change character'
+    <color=green>"F"</color> change
+    character'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0cf27a0bbb14a2b439b45b57bf7cb550, type: 2}
+  m_sharedMaterial: {fileID: 4318144273592479332, guid: 0cf27a0bbb14a2b439b45b57bf7cb550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
