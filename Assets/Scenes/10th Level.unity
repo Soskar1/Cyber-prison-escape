@@ -123,6 +123,78 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &67900972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1745058120949189268, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_Name
+      value: Crosshair Cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189269, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 2037296487}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+--- !u!114 &67900973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1745058120949189269, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+  m_PrefabInstance: {fileID: 67900972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8643b72454dfc34ab20f0fa285c1619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &229201226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,6 +1691,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5150351612004682897, guid: 6aead322615b7464d80d31386eac9bae, type: 3}
+      propertyPath: m_Size.x
+      value: 0.18536156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150351612004682897, guid: 6aead322615b7464d80d31386eac9bae, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.034781817
+      objectReference: {fileID: 0}
     - target: {fileID: 5150351612004682898, guid: 6aead322615b7464d80d31386eac9bae, type: 3}
       propertyPath: m_Name
       value: Target (1)
@@ -2165,6 +2245,10 @@ PrefabInstance:
       propertyPath: _level
       value: 
       objectReference: {fileID: 2037296486}
+    - target: {fileID: 2097886352530719656, guid: 95c88dcbb79f55c408edabc0aafe6937, type: 3}
+      propertyPath: _cursor
+      value: 
+      objectReference: {fileID: 67900973}
     - target: {fileID: 2097886353489348469, guid: 95c88dcbb79f55c408edabc0aafe6937, type: 3}
       propertyPath: _pool
       value: 

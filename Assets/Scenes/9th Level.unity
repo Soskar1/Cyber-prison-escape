@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: _level
       value: 
       objectReference: {fileID: 898637293}
+    - target: {fileID: 2097886352530719656, guid: 95c88dcbb79f55c408edabc0aafe6937, type: 3}
+      propertyPath: _cursor
+      value: 
+      objectReference: {fileID: 1759025849}
     - target: {fileID: 2097886353489348469, guid: 95c88dcbb79f55c408edabc0aafe6937, type: 3}
       propertyPath: _pool
       value: 
@@ -1873,6 +1877,78 @@ RectTransform:
   m_AnchoredPosition: {x: 367.5, y: 206.6}
   m_SizeDelta: {x: 735, y: 413.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1759025848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1745058120949189268, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_Name
+      value: Crosshair Cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189269, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 898637294}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745058120949189270, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+--- !u!114 &1759025849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1745058120949189269, guid: b02e36f8cbb498b49b91c670e47f1fbb, type: 3}
+  m_PrefabInstance: {fileID: 1759025848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8643b72454dfc34ab20f0fa285c1619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1834338850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2204,7 +2280,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0017153509, y: 0}
+  m_Offset: {x: 0.0237706, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2215,7 +2291,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12253966, y: 0.8758224}
+  m_Size: {x: 0.3280565, y: 0.7487184}
   m_EdgeRadius: 0
 --- !u!114 &7198672972333593436
 MonoBehaviour:

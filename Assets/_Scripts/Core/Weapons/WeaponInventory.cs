@@ -9,6 +9,7 @@ namespace Core.Weapons
     public class WeaponInventory : MonoBehaviour
     {
         [SerializeField] private Shooting _shooting;
+        [SerializeField] private CrosshairCursor _cursor;
 
         [SerializeField] private List<Weapon> _weapons = new List<Weapon>();
         private Dictionary<WeaponConfiguration, Weapon> _inventory = new Dictionary<WeaponConfiguration, Weapon>();
@@ -27,6 +28,9 @@ namespace Core.Weapons
             {
                 weapon.gameObject.SetActive(true);
                 _shooting.CurrentWeapon = weapon;
+
+                if (!_cursor.gameObject.activeSelf)
+                    _cursor.gameObject.SetActive(true);
             }
         }
 
